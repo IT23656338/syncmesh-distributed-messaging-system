@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distributed Messaging - Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Distributed Messaging System</h1>
+        <p>ZooKeeper-coordinated, fault-tolerant messaging</p>
+        <p id="current-server" style="color: #22c55e; font-weight: bold;"></p>
+    </header>
+
+    <main>
+        <section class="panel">
+            <h2>Cluster Nodes</h2>
+            <button id="refresh-nodes">Refresh Nodes</button>
+            <div id="nodes" class="list"></div>
+        </section>
+
+        <section class="panel">
+            <h2>Health & Topology</h2>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
+                <button id="refresh-heartbeats" class="secondary">Heartbeats</button>
+                <button id="refresh-leader" class="secondary">Leader</button>
+                <button id="refresh-replicas" class="secondary">Replicas</button>
+                <button id="refresh-replicas-manual" class="secondary">Refresh Replicas</button>
+                <button id="trigger-election" class="secondary">Trigger Election</button>
+                <button id="enable-partition" class="secondary">Enable Partition Mode</button>
+                <button id="disable-partition" class="secondary">Disable Partition Mode</button>
+            </div>
+            <div id="health" class="list"></div>
+        </section>
+
+        <section class="panel">
+            <h2>Send Message</h2>
+            <form id="send-form">
+                <div class="field">
+                    <label for="sender">From Server</label>
+                    <select id="sender" name="sender" required>
+                        <option value="">Select sender server...</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="receiver">To Server</label>
+                    <select id="receiver" name="receiver" required>
+                        <option value="">Select receiver server...</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="payload">Message</label>
+                    <textarea id="payload" name="payload" rows="3" required placeholder="Enter message content..."></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+                <span id="send-status" class="status"></span>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Messages</h2>
+            <button id="refresh-messages">Refresh Messages</button>
+            <div id="messages" class="list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <small>© 2025 DMS</small>
+    </footer>
+
+    <script src="/app.js"></script>
+    <script>
+        // initial load
+        window.addEventListener('DOMContentLoaded', () => {
+            window.DMS && DMS.refreshNodes();
+            window.DMS && DMS.refreshMessages();
+        });
+    </script>
+</body>
+</html>
+
