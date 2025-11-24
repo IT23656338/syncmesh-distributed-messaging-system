@@ -1,6 +1,6 @@
 # SyncMesh — Distributed Messaging Sandbox
 
-SyncMesh is a teaching-focused distributed messaging system that blends Spring Boot, ZooKeeper coordination, Lamport clocks, and vector clocks to demonstrate how modern data platforms keep messages consistent across multiple nodes. It ships with a React-free (vanilla JS) operations dashboard, an opt-in CLI client, and a set of admin endpoints you can use to simulate partitions, observe leader election, and replay replication logs.
+SyncMesh is a distributed messaging system that blends Spring Boot, ZooKeeper coordination, Lamport clocks, and vector clocks to demonstrate how modern data platforms keep messages consistent across multiple nodes. It ships with a React-free (vanilla JS) operations dashboard, an opt-in CLI client, and a set of admin endpoints you can use to simulate partitions, observe leader election, and replay replication logs.
 
 ## Table of Contents
 1. [Key Features](#key-features)
